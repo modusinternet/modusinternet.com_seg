@@ -1,0 +1,274 @@
+{CCMS_DB_PRELOAD:all,contact-us}<!DOCTYPE html>
+<html id="no-fouc" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" style="opacity: 0;">
+	<head>
+		<meta charset="utf-8">
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">SEG Magnetics, Inc. - {CCMS_DB:all,contact-us}</title>
+		<meta name="description" content="" />
+
+		{CCMS_TPL:header-head.html}
+		<script>
+			var navActiveArray = ["contact-us","contact-us_index","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["contact-us-fl"];
+		</script>
+	</head>
+	<body>
+		{CCMS_TPL:header-body.html}
+		<div class="topic">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12" dir="{CCMS_DB_DIR:all,location}">
+						<h3 dir="{CCMS_DB_DIR:all,location:1}">
+							{CCMS_DB:all,location}:
+						</h3>
+						<ol class="breadcrumb pull-{CCMS_LIB:_default.php;FUNC:ccms_lng_dir_left_to_right}">
+							<li>
+								<a href="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" dir="{CCMS_DB_DIR:all,homepage}">
+									{CCMS_DB:all,homepage}
+								</a>
+							</li>
+							<li class="active" dir="{CCMS_DB_DIR:all,contact-us}">
+								{CCMS_DB:all,contact-us}
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<h1 dir="{CCMS_DB_DIR:all,contact-us:1}">
+							{CCMS_DB:all,contact-us}
+						</h1>
+						<div class="section">
+							<!-- p class="contact-us__intro" dir="{ CCMS_DB_DIR:all,footerCommentQuest:1}">
+								{ CCMS_DB:all,footerCommentQuest}
+							</p -->
+							<div class="alert" id="form_message" role="alert"></div>
+							<form id="cuForm">
+								<div class="form-group">
+									<label for="cuName" dir="{CCMS_DB_DIR:contact-us,name}">{CCMS_DB:contact-us,name}</label>
+									<input type="text" name="cuName" class="form-control" id="cuName" placeholder="{CCMS_DB:contact-us,full-name}" data-original-title="" title="">
+									<label id="error-cuName" class="error" for="cuName" style="display: none;"></label>
+								</div>
+								<div class="form-group">
+									<label for="cuEmail" dir="{CCMS_DB_DIR:contact-us,email-address}">{CCMS_DB:contact-us,email-address}</label>
+									<input type="email" name="cuEmail" class="form-control" dir="{CCMS_DB_DIR:all,email}" id="cuEmail" placeholder="{CCMS_DB:all,email}" data-original-title="" title="">
+									<label id="error-cuEmail" class="error" for="cuEmail" style="display: none;"></label>
+								</div>
+								<div class="form-group">
+									<label for="cuMessage" dir="{CCMS_DB_DIR:contact-us,email-address}">{CCMS_DB:contact-us,message}</label>
+									<textarea name="cuMessage" class="form-control" dir="{CCMS_DB_DIR:contact-us,message}" rows="7" id="cuMessage" placeholder="{CCMS_DB:contact-us,message}"></textarea>
+									<label id="error-cuMessage" class="error" for="cuMessage" style="display: none;"></label>
+								</div>
+								<div class="form-group" id="form-captcha">
+									<div class="g-recaptcha" data-sitekey="{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}"></div>
+									<label id="error-grecaptcha" class="error" for="g-recaptcha" style="display: none;"></label>
+								</div>
+								<button type="submit" class="btn btn-lg btn-primary" dir="{CCMS_DB_DIR:all,send-message}">{CCMS_DB:all,send-message}</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="section">
+							<p style="text-indent: 0;">
+								SEG Magnetics, Inc.<br />
+								PO Box 1291, 10174 Austin Dr<br />
+								Spring Valley, CA 91977
+							</p>
+							<!-- <p style="text-indent: 0;">{CCMS_DB:all,footerRegionalPhone}</p> -->
+							<p style="text-indent: 0;" dir="{CCMS_DB_DIR:all,comment-quest:1}">
+								{CCMS_DB:all,comment-quest}
+							</p>
+							<p style="text-indent: 0;">
+								<bdo dir="{CCMS_DB_DIR:all,email:1}">{CCMS_DB:all,email}</bdo>: <script>document.write("<a class=\"emailLink\" href=\"" + "mai" + "lto:" + "info" + "@" + "segmagnetics.com" + "\">" + "info" + "&#64;" + "segmagnetics.com" + "</a>");</script><br />
+								<a href="https://discord.gg/esWg5Vr" target="_blank"><i class="fa fa-comments-o"></i> Discord</a><br />
+								<a href="https://www.facebook.com/SegMagneticsInc/" target="_blank"><i class="fa fa-facebook"></i> Facebook</a><br />
+								<a href="https://twitter.com/SegMagneticsInc" target="_blank"><i class="fa fa-twitter"></i> Twitter</a><br />
+								<a href="https://www.youtube.com/c/SegMagneticsInc" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+							</p>
+						</div>
+						<div class="section">
+							<div class="shadowbox" style="padding-bottom: 10px;">
+								<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0; height:400px; width:100%;" src="https://www.google.com/maps/embed/v1/place?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}&q=10174+Austin+Dr,Spring+Valley,CA"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		{CCMS_TPL:footer-1.html}
+		<script>
+			function loadFirst(e,t){var a=document.createElement("script");a.async = true;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var cb = function() {
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//d22d9mrn42f6vf.cloudfront.net/ccmstpl/_css/styles.min.css';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//fonts.googleapis.com/css?family=Open+Sans:300';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+			};
+			var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+			if (raf) raf(cb);
+			else window.addEventListener('load', cb);
+
+			function loadJSResources() {
+				loadFirst("//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js", function(){ /* JQuery loaded */
+					loadFirst("//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", function(){ /* Bootstrap loaded */
+						loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
+							loadFirst("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js", function(){ /* jquery.validate loaded */
+								loadFirst("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js", function(){ /* validate additional-methods loaded */
+									loadFirst("//d22d9mrn42f6vf.cloudfront.net/ccmstpl/_js/javascript.min.js", function(){ /* main JavaScript for the site */
+
+										navActiveArray.forEach(function(s) {$("#"+s).addClass("active");});
+										navActiveFooterArray.forEach(function(s) {$("#"+s).addClass("active");});
+
+										/* Fade in web page. */
+										$("#no-fouc").delay(100).animate({"opacity": "1"}, 500);
+
+										$.validator.addMethod(
+											"badCharRegex",
+											function(value, element, regexp) {
+												var re = new RegExp(regexp);
+												return this.optional(element) || re.test(value);
+											},
+											"Please check your input."
+										);
+
+										$("#cuForm").validate({
+											rules: {
+												cuName: {
+													required: true,
+													minlength: 2,
+													maxlength: 32,
+													badCharRegex: /^[^\<\>&#]+$/i
+												},
+												cuEmail: {
+													required: true,
+													email: true,
+													maxlength: 256
+												},
+												cuMessage: {
+													required: true,
+													maxlength: 512,
+													badCharRegex: /^[^\<\>&#]+$/i
+												}
+											},
+											messages: {
+												cuName: {
+													required: "Please enter your name.",
+													minlength: "This field must be between 2 to 32 characters.",
+													maxlength: "This field must be between 2 to 32 characters.",
+													badCharRegex: "The following characters are not permited in this form.  ( > < & # )  Please remove before submitting."
+												},
+												cuEmail: {
+													required: "Please enter a valid email address.",
+													maxlength: "Please try to keep your email address to 256 characters or less."
+												},
+												cuMessage: {
+													required: "Please tell us what's on your mind.",
+													maxlength: "Please try to keep your messages to 512 characters or less.",
+													badCharRegex: "The following characters are not permited in this form.  ( > < & # )  Please remove before submitting."
+												}
+											},
+											errorPlacement: function ($error, $element) {
+												var name = $element.attr("name");
+												$("#error-" + name).append($error);
+											},
+											submitHandler: function(form) {
+												var request;
+												/* Abort any pending request. */
+												if (request) request.abort();
+												var $inputs = $(form).find("input, select, textarea, button");
+												var serializedData = $(form).serialize();
+												/* Disable the inputs for the duration of the ajax request. */
+												$inputs.prop("disabled", true);
+
+												request = $.ajax({
+													beforeSend: function (XMLHttpRequest) {
+														$('#cuForm .has-error').removeClass('has-error');
+														$('#cuForm .help-block').html('').hide();
+														$('#form_message').removeClass('alert-success').html('');
+													},
+													cache: false,
+													data: serializedData,
+													dataType: 'json',
+													type: "post",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us/index-ajax.html"
+												});
+												/* Called on success. */
+												request.done(function(json, textStatus) {
+													if(json.error) {
+														/* Error messages */
+														if(json.error.cuName) {
+															$('#cuName').parent().addClass('has-error');
+															$('#error-cuName').html(json.error.cuName).slideDown();
+														}
+														if(json.error.cuEmail) {
+															$('#cuEmail').parent().addClass('has-error');
+															$('#error-cuEmail').html(json.error.cuEmail).slideDown();
+														}
+														if(json.error.cuMessage) {
+															$('#cuMessage').parent().addClass('has-error');
+															$('#error-cuMessage').html(json.error.cuMessage).slideDown();
+														}
+														if(json.error.grecaptcha) {
+															$('#error-grecaptcha').html(json.error.grecaptcha).slideDown();
+														}
+														$inputs.prop("disabled", false);
+													}
+													/* Refresh Captcha */
+													grecaptcha.reset();
+													if(json.success) {
+														$('#form_message').addClass('alert-success').html(json.success).slideDown();
+														setTimeout(function() {
+															$('#form_message').slideUp("fast", function() {
+																$(this).removeClass('alert-success').html('');
+															});
+														},4000);
+														$('#cuForm').find('.form-control').val('');
+														/* reenable the inputs */
+														setTimeout(function() {
+															$inputs.prop("disabled", false);
+														}, 2000);
+													}
+												});
+												/* Called on failure. */
+												request.fail(function (jqXHR, textStatus, errorThrown){
+													/* log the error to the console */
+													$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
+												});
+												/* Called if the request failed or succeeded. */
+												request.always(function () {
+													/* reenable the inputs */
+													setTimeout(function() {
+														$inputs.prop("disabled", false);
+													}, 2000);
+												});
+												/* Prevent default posting of form. */
+												return false;
+											}
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+
+			if (window.addEventListener)
+				window.addEventListener("load", loadJSResources, false);
+			else if (window.attachEvent)
+				window.attachEvent("onload", loadJSResources);
+			else window.onload = loadJSResources;
+		</script>
+	</body>
+</html>

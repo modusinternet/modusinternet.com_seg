@@ -1,0 +1,187 @@
+{CCMS_DB_PRELOAD:all}<!DOCTYPE html>
+<html id="no-fouc" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" style="opacity: 0;">
+	<head>
+		<meta charset="utf-8">
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">SEG Magnetics, Inc. - {CCMS_DB:all,sitemap}</title>
+		<meta name="description" content="" />
+
+		{CCMS_TPL:header-head.html}
+
+		<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['orgchart']}]}"></script>
+
+		<style type="text/css">
+			.google-visualization-orgchart-node {
+				border: none;
+				background: -webkit-gradient(linear, left top, left bottom, from(#F2F4CE), to(#E2E78C));
+			}
+			.sitemap-node-desc {
+				color: red;
+				font-style: italic;
+			}
+		</style>
+
+		<script>
+			var navActiveArray = ["lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["sitemap-fl"];
+		</script>
+	</head>
+	<body>
+		{CCMS_TPL:header-body.html}
+		<div class="topic">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12" dir="{CCMS_DB_DIR:all,location}">
+						<h3 dir="{CCMS_DB_DIR:all,location:1}">
+							{CCMS_DB:all,location}:
+						</h3>
+						<ol class="breadcrumb pull-{CCMS_LIB:_default.php;FUNC:ccms_lng_dir_left_to_right}">
+							<li>
+								<a href="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" dir="{CCMS_DB_DIR:all,homepage}">
+									{CCMS_DB:all,homepage}
+								</a>
+							</li>
+							<li class="active" dir="{CCMS_DB_DIR:all,sitemap}">
+								{CCMS_DB:all,sitemap}
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 dir="{CCMS_DB_DIR:all,sitemap:1}">
+							{CCMS_DB:all,sitemap}
+						</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div id="chart_div"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div id="chart2_div"></div>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				google.load("visualization", "1", {packages:["orgchart"]});
+				google.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', 'Name');
+					data.addColumn('string', 'Manager');
+					data.addColumn('string', 'ToolTip');
+
+					data.addRows([
+						[{v:'homepage', f:'<h3><a href="//{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}">SEG Magnetics, Inc.</a></h3>'}, '', "{CCMS_DB:all,homepage}"],
+
+						[{v:'spatial-effect-generator', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/spatial-effect-generator/" dir="{CCMS_DB_DIR:all,special-effect-generator}">{CCMS_DB:all,special-effect-generator} (SEG)</a></h3>'}, 'homepage', '{CCMS_DB:all,special-effect-generator} (SEG)'],
+
+						[{v:'research', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/spatial-effect-generator/research.html" dir="{CCMS_DB_DIR:all,research}">{CCMS_DB:all,research}</a></h3>'}, 'spatial-effect-generator', '{CCMS_DB:all,research}'],
+
+						[{v:'invest', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/spatial-effect-generator/invest.html" dir="{CCMS_DB_DIR:all,invest}">{CCMS_DB:all,invest}</a></h3>'}, 'research', '{CCMS_DB:all,invest}'],
+
+						[{v:'news', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/spatial-effect-generator/news/" dir="{CCMS_DB_DIR:all,news}">{CCMS_DB:all,news}</a></h3>'}, 'invest', '{CCMS_DB:all,news}'],
+
+
+
+						[{v:'about-us', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/" dir="{CCMS_DB_DIR:all,about-us}">{CCMS_DB:all,about-us}</a></h3>'}, 'homepage', '{CCMS_DB:all,about-us}'],
+
+						[{v:'about-us_professor-john-searl', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/professor-john-searl.html" dir="{CCMS_DB_DIR:all,prof-john-searl}">{CCMS_DB:all,prof-john-searl}</a></h3>'}, 'about-us', '{CCMS_DB:all,prof-john-searl}'],
+
+						[{v:'about-us_fernando-d-morris', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/fernando-d-morris.html" dir="{CCMS_DB_DIR:all,fernando-d-morris}">{CCMS_DB:all,fernando-d-morris}</a></h3>'}, 'about-us', '{CCMS_DB:all,fernando-d-morris}'],
+
+						[{v:'about-us_jason-verbelli', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/jason-verbelli.html" dir="{CCMS_DB_DIR:all,jason-verbelli}">{CCMS_DB:all,jason-verbelli}</a></h3>'}, 'about-us', '{CCMS_DB:all,jason-verbelli}'],
+						
+						[{v:'about-us_vincent-hallberg', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/vincent-hallberg.html" dir="{CCMS_DB_DIR:all,vincent-hallberg}">{CCMS_DB:all,vincent-hallberg}</a></h3>'}, 'about-us', '{CCMS_DB:all,vincent-hallberg}'],
+						
+						[{v:'about-us_thank-you', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/thank-you.html" dir="{CCMS_DB_DIR:all,thank-you}">{CCMS_DB:all,thank-you}</a></h3>'}, 'about-us', '{CCMS_DB:all,thank-you}'],
+
+
+
+						[{v:'contact-us', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us/" dir="{CCMS_DB_DIR:all,contact-us}">{CCMS_DB:all,contact-us}</a></h3>'}, 'homepage', '{CCMS_DB:all,contact-us}'],
+
+						[{v:'contact-us_faq', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us/faq.html" dir="{CCMS_DB_DIR:all,faq}">{CCMS_DB:all,faq}</a></h3>'}, 'contact-us', '{CCMS_DB:all,faq}']
+
+					]);
+
+					/*data.setRowProperty(0, 'style', 'background: -webkit-gradient(linear, left top, left bottom, from(#efa977), to(#c27f50))'); */
+
+					var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+					chart.draw(data, {allowHtml:true});
+
+					var data2 = new google.visualization.DataTable();
+					data2.addColumn('string', 'Name');
+					data2.addColumn('string', 'Manager');
+					data2.addColumn('string', 'ToolTip');
+
+					data2.addRows([
+						[{v:'other', f:'<h3 dir="{CCMS_DB_DIR:all,privacy-policy}">{CCMS_DB:all,other}</h3>'}, '', '{CCMS_DB:all,other}'],
+
+						[{v:'other_privacy-policy', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/privacy-policy.html" dir="{CCMS_DB_DIR:all,privacy-policy}">{CCMS_DB:all,privacy-policy}</a></h3>'}, 'other', '{CCMS_DB:all,privacy-policy}'],
+
+						[{v:'other_sitemap', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sitemap.html" dir="{CCMS_DB_DIR:all,sitemap}">{CCMS_DB:all,sitemap}</a></h3>'}, 'other', '{CCMS_DB:all,sitemap}'],
+
+						[{v:'other_search', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/search.html?search=" dir="{CCMS_DB_DIR:all,search}">{CCMS_DB:all,search}</a></h3>'}, 'other', '{CCMS_DB:all,search}'],
+
+						[{v:'other_interview-01', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/fernando-d-morris-and-jason-verbelli-interview-01.html" dir="{CCMS_DB_DIR:all,fernando-d-morris-and-jason-verbelli-interview-01}">{CCMS_DB:all,fernando-d-morris-and-jason-verbelli-interview-01}</a></h3>'}, 'other', '{CCMS_DB:all,fernando-d-morris-and-jason-verbelli-interview-01}'],
+
+						[{v:'other_translation', f:'<h3><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/translation-help-needed.html" dir="{CCMS_DB_DIR:all,translation-help-needed}">{CCMS_DB:all,translation-help-needed}</a></h3>'}, 'other', '{CCMS_DB:all,translation-help-needed}']
+
+					]);
+
+					var chart = new google.visualization.OrgChart(document.getElementById('chart2_div'));
+					chart.draw(data2, {allowHtml:true});
+				}
+			</script>
+		</main>
+		{CCMS_TPL:footer-1.html}
+		<script>
+			function loadFirst(e,t){var a=document.createElement("script");a.async = true;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var cb = function() {
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//d22d9mrn42f6vf.cloudfront.net/ccmstpl/_css/styles.min.css';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+
+				var l = document.createElement('link'); l.rel = 'stylesheet';
+				l.href = '//fonts.googleapis.com/css?family=Open+Sans:300';
+				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+			};
+			var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+			if (raf) raf(cb);
+			else window.addEventListener('load', cb);
+
+			function loadJSResources() {
+				loadFirst("//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js", function(){ /* JQuery is loaded */
+					loadFirst("//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", function(){ /* Bootstrap is loaded */
+						loadFirst("//d22d9mrn42f6vf.cloudfront.net/ccmstpl/_js/javascript.min.js", function(){ /* main JavaScript for the site */
+
+							navActiveArray.forEach(function(s) {$("#"+s).addClass("active");});
+							navActiveFooterArray.forEach(function(s) {$("#"+s).addClass("active");});
+
+							/* Fade in web page. */
+							$("#no-fouc").delay(100).animate({"opacity": "1"}, 500);
+						});
+					});
+				});
+			}
+
+			if (window.addEventListener)
+				window.addEventListener("load", loadJSResources, false);
+			else if (window.attachEvent)
+				window.attachEvent("onload", loadJSResources);
+			else window.onload = loadJSResources;
+		</script>
+	</body>
+</html>

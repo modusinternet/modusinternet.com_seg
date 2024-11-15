@@ -1,0 +1,411 @@
+{CCMS_DB_PRELOAD:all,contact-us}<!DOCTYPE html>
+<html id="no-fouc" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
+	<head>
+		<meta charset="utf-8">
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">SEG Magnetics, Inc. - {CCMS_DB:all,special-effect-generator} | {CCMS_DB:all,webgl}</title>
+		<meta name="description" content="" />
+
+		{CCMS_TPL:header-head.html}
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+			a, a:hover, a:visited {
+				color: #fff;
+				font-size: 2em;
+				margin: 8px 0;
+			}
+			#seg3d { height: 100vh; }
+
+			#animateControls {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				display: inline-flex;
+				margin: 10px;
+			}
+
+			#animateButton {
+				border: 1px solid #56575B;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				border-radius: 8px;
+				padding: 10px;
+				background-color: #ccccff;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#ccccff), to(#8E8E8E));
+				background-image: -webkit-linear-gradient(top, #ccccff, #8E8E8E);
+				background-image: -moz-linear-gradient(top, #ccccff, #8E8E8E);
+				background-image: -ms-linear-gradient(top, #ccccff, #8E8E8E);
+				background-image: -o-linear-gradient(top, #ccccff, #8E8E8E);
+				background-image: linear-gradient(to bottom, #ccccff, #8E8E8E);
+				filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ccccff, endColorstr=#8E8E8E);
+				color: #fff;
+				text-align: center;
+				cursor: pointer;
+				width: 100px;
+			}
+
+
+
+
+
+
+
+input[type=range] {
+  height: 37px;
+  -webkit-appearance: none;
+  width: 90%;
+  margin: 2px 5px;
+  background: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #00ff00;
+  border-radius: 4px;
+  border: 1px solid #56575B;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #56575B;
+  height: 30px;
+  width: 24px;
+  border-radius: 5px;
+  background: #a1a1a1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #00ff00;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #00ff00;
+  border-radius: 4px;
+  border: 1px solid #56575B;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #56575B;
+  height: 30px;
+  width: 24px;
+  border-radius: 5px;
+  background: #a1a1a1;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #00ff00;
+  border: 1px solid #56575B;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #00ff00;
+  border: 1px solid #56575B;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #56575B;
+  height: 30px;
+  width: 24px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #00ff00;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #00ff00;
+}
+		</style>
+	</head>
+
+	<body>
+		<div id="seg3d">
+			<div id="animateControls">
+				<!-- <button id="animateButton">Animate &raquo;</button> -->
+				<button id="animateButton">Pause ||</button>
+				<input class="range" id="range" style="float:left;" type="range" min="0" max="100" set="10" value="5">
+			</div>
+		</div>
+		<!-- script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/90/three.min.js"></script -->
+		<script src="/ccmstpl/spatial-effect-generator/three.min.js"></script>
+		<!-- script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script -->
+		<script src="/ccmstpl/spatial-effect-generator/OrbitControls.js"></script>
+		<script>
+			var rings, groupRollers1, groupRollers2, groupRollers3;
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+			var camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, .1, 1000 );
+			var container = document.getElementById( "seg3d" );
+			var scene = new THREE.Scene();
+			/* var animateRollers = false; */
+			var animateRollers = true;
+			var rollerRing1 = .001;
+			var rollerRing2 = .0005;
+			var rollerRing3 = .001;
+			var electronPaths = [];
+			var particleCurve1 = new THREE.EllipseCurve(
+				-.365, .15,	/* ax, aY */
+				.35, .25,	/* xRadius, yRadius */
+				450, 150,	/* aStartAngle, aEndAngle */
+				true,			/* aClockwise */
+				0				/* aRotation */
+			);
+			var particleCurve2 = new THREE.EllipseCurve( .365,  .15, .35, .25, 150, 450, false, 0 );
+			var particleCurve3 = new THREE.EllipseCurve( -.365, -.15, .35, -.25,	450, 150, true, 0 );
+			var particleCurve4 = new THREE.EllipseCurve( .365,  -.15, .35, -.25, 150, 450, false, 0 );
+
+			var count = 20;
+			var inc = 1 / count;
+
+			var points1 = [];
+			var points2 = [];
+			var points3 = [];
+			var points4 = [];
+			var pointAt = 0;
+			var clock = new THREE.Clock();
+			var time = 0;
+			var pointsGeom1 = new THREE.Geometry();
+			var pointsGeom2 = new THREE.Geometry();
+			var pointsGeom3 = new THREE.Geometry();
+			var pointsGeom4 = new THREE.Geometry();
+			var range = document.getElementById("range");
+			var animateButton = document.getElementById( 'animateButton' );
+
+			init();
+			animate();
+
+			function init() {
+				/* helpers */
+				/* scene.add( new THREE.AxesHelper( .75 )); */
+				/* scene.add( new THREE.GridHelper( 2, 10, "white", "gray" )); */
+
+				/* Range Bar */
+				range.oninput = function() {
+					rollerRing1 = range.value * .0005;
+					count = range.value;
+				}
+
+				/* Animate Button */
+				animateButton.onclick = function StartAnimation() {
+					if( !animateRollers ) {
+						animateButton.innerHTML = 'Pause ||';
+						animateRollers = true;
+						animate();
+					} else {
+						animateButton.innerHTML = 'Continue &raquo;';
+						animateRollers = false;
+					}
+				}
+
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( container.offsetWidth, container.offsetHeight );
+				container.appendChild( renderer.domElement );
+
+				/* camera */
+				camera.position.set( .2, .65, 1.5 );
+				scene.add( camera );
+
+				/* controls */
+				var controls = new THREE.OrbitControls( camera, renderer.domElement ); /* must be created inside the init() call or will fail. */
+				controls.minDistance = 1;
+				controls.maxDistance = 2;
+				/* controls.maxPolarAngle = Math.PI / 2; */
+
+				/* light */
+				scene.add( new THREE.AmbientLight( 0x222222 ));
+				var light = new THREE.PointLight( 0xffffff, 1 );
+				camera.add( light );
+
+				var loader = new THREE.JSONLoader();
+				loader.load( "/ccmstpl/_img/seg-rings.json", function ( geometry ) {
+					rings = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial({}));
+					rings.scale.set( 2, 1, 2 );
+					rings.position.set( 0, 0, 0 );
+					scene.add( rings );
+				});
+
+				var orb = new THREE.CylinderGeometry( .03, .03, .06, 15 );
+				var cover = new THREE.MeshPhongMaterial({ color: "#696969" });
+
+				groupRollers1 = new THREE.Group();
+				var rollCount = 0;
+				var rollTotal = 12;
+				var distanceFromCenter = .25;
+				var degreesEach = 30;
+				var angleInDegrees = 0;
+				var centerX = 0;
+				var centerZ = 0;
+				for( rollCount; rollCount < rollTotal; rollCount++ ) {
+					var angleAsRadians = ( angleInDegrees * Math.PI ) / 180.0;
+					var roller = new THREE.Mesh( orb, cover );
+					var x = centerX +  Math.cos( angleAsRadians ) * distanceFromCenter;
+					var z = centerZ + Math.sin( angleAsRadians ) * distanceFromCenter;
+					roller.position.set( x, 0, z );
+					groupRollers1.add( roller );
+					angleInDegrees += degreesEach;
+				}
+				scene.add( groupRollers1 );
+
+				groupRollers2 = new THREE.Group();
+				rollCount = 0;
+				rollTotal = 22;
+				distanceFromCenter = .43;
+				degreesEach = 16.36;
+				angleInDegrees = 0;
+				centerX = 0;
+				centerZ = 0;
+				for( rollCount; rollCount < rollTotal; rollCount++ ) {
+					var angleAsRadians = ( angleInDegrees * Math.PI ) / 180.0;
+					var roller = new THREE.Mesh( orb, cover );
+					var x = centerX +  Math.cos( angleAsRadians ) * distanceFromCenter;
+					var z = centerZ + Math.sin( angleAsRadians ) * distanceFromCenter;
+					roller.position.set( x, 0, z );
+					groupRollers2.add( roller );
+					angleInDegrees += degreesEach;
+				}
+				scene.add( groupRollers2 );
+
+				groupRollers3 = new THREE.Group();
+				rollCount = 0;
+				rollTotal = 32;
+				distanceFromCenter = .6;
+				degreesEach = 11.25;
+				angleInDegrees = 0;
+				centerX = 0;
+				centerZ = 0;
+				for( rollCount; rollCount < rollTotal; rollCount++ ) {
+					var angleAsRadians = ( angleInDegrees * Math.PI ) / 180.0;
+					var roller = new THREE.Mesh( orb, cover );
+					var x = centerX +  Math.cos( angleAsRadians ) * distanceFromCenter;
+					var z = centerZ + Math.sin( angleAsRadians ) * distanceFromCenter;
+					roller.position.set( x, 0, z );
+					groupRollers3.add( roller );
+					angleInDegrees += degreesEach;
+				}
+				scene.add( groupRollers3 );
+
+				/* Using of .getPoints(division) will give you a set of points of division + 1, we'll get the points manually. */
+				for (let i = 0; i < count; i++) {
+					let point1 = particleCurve1.getPoint(pointAt);
+					point1.z = 0;
+					point1.pointAt = pointAt;
+					points1.push(point1);
+
+					let point2 = particleCurve2.getPoint(pointAt);
+					point2.z = 0;
+					point2.pointAt = pointAt;
+					points2.push(point2);
+
+					let point3 = particleCurve3.getPoint(pointAt);
+					point3.z = 0;
+					point3.pointAt = pointAt;
+					points3.push(point3);
+
+					let point4 = particleCurve4.getPoint(pointAt);
+					point4.z = 0;
+					point4.pointAt = pointAt;
+					points4.push(point4);
+
+					pointAt += inc; /* increment position along the curve for next point */
+				}
+
+				pointsGeom1.vertices = points1;
+				var pointsObj1 = new THREE.Points(pointsGeom1, new THREE.PointsMaterial({ size: .03, color: "white" }));
+				scene.add(pointsObj1);
+
+				pointsGeom2.vertices = points2;
+				var pointsObj2 = new THREE.Points(pointsGeom2, new THREE.PointsMaterial({ size: .03, color: "white" }));
+				scene.add(pointsObj2);
+
+				pointsGeom3.vertices = points3;
+				var pointsObj3 = new THREE.Points(pointsGeom3, new THREE.PointsMaterial({ size: .03, color: "white" }));
+				scene.add(pointsObj3);
+
+				pointsGeom4.vertices = points4;
+				var pointsObj4 = new THREE.Points(pointsGeom4, new THREE.PointsMaterial({ size: .03, color: "white" }));
+				scene.add(pointsObj4);
+
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+			function animate() {
+				if( animateRollers ) {
+					/* Rotate groupRollers1 */
+					groupRollers1.rotation.y += rollerRing1;
+					/* Rotate groupRollers2 */
+					groupRollers2.rotation.y += rollerRing1 + rollerRing2;
+					/* Rotate groupRollers3 */
+					groupRollers3.rotation.y += rollerRing1 + rollerRing3;
+
+					time = clock.getDelta();
+
+					points1.forEach( p => {
+						p.pointAt = ( p.pointAt + time * ( range.value/100 )) % 1; /* it always will be from 0 to 1 */
+						particleCurve1.getPoint(p.pointAt, p); /* re-using of the current point */
+					});
+					pointsGeom1.verticesNeedUpdate = true;
+
+					points2.forEach( p => {
+						p.pointAt = ( p.pointAt + time * ( range.value/100 )) % 1; /* it always will be from 0 to 1 */
+						particleCurve2.getPoint(p.pointAt, p); /* re-using of the current point */
+					});
+					pointsGeom2.verticesNeedUpdate = true;
+
+					points3.forEach( p => {
+						p.pointAt = ( p.pointAt + time * ( range.value/100 )) % 1; /* it always will be from 0 to 1 */
+						particleCurve3.getPoint(p.pointAt, p); /* re-using of the current point */
+					});
+					pointsGeom3.verticesNeedUpdate = true;
+
+					points4.forEach( p => {
+						p.pointAt = ( p.pointAt + time * ( range.value/100 )) % 1; /* it always will be from 0 to 1 */
+						particleCurve4.getPoint(p.pointAt, p); /* re-using of the current point */
+					});
+					pointsGeom4.verticesNeedUpdate = true;
+				}
+
+				requestAnimationFrame( animate );
+				render();
+			}
+
+			function render() {
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>
